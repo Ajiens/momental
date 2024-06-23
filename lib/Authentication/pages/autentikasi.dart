@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/theme/color_pallete.dart';
-import 'package:momental/widgets/Autentikasi/button_placeholder.dart';
-import 'package:momental/widgets/Autentikasi/slider.dart';
+import 'package:momental/Authentication/widget/button_placeholder.dart';
+import 'package:momental/Authentication/widget/slider.dart';
 
 class AuthenticationPage extends StatelessWidget {
   const AuthenticationPage({super.key});

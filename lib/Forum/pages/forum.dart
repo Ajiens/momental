@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:momental/theme/color_pallete.dart';
-import 'package:momental/widgets/Forum/postingan_card.dart';
-import 'package:momental/widgets/Forum/tagline_forum_card.dart';
+import 'package:momental/Forum/widget/postingan_card.dart';
+import 'package:momental/Forum/widget/tagline_forum_card.dart';
 import 'package:momental/widgets/header_option.dart';
-import 'package:momental/widgets/Forum/mood_today.dart';
+import 'package:momental/Forum/widget/mood_today.dart';
 
 
 class Forum extends StatelessWidget {

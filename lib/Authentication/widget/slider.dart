@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/theme/color_pallete.dart';
-import 'package:momental/widgets/Autentikasi/slider_content.dart';
-import 'package:momental/widgets/navbar.dart';
+import 'package:momental/Authentication/widget/slider_content.dart';
 
 class SliderAuthentication extends StatefulWidget {
   SliderAuthentication({super.key});

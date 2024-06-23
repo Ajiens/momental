@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:momental/pages/autentikasi.dart';
+import 'package:momental/Authentication/pages/autentikasi.dart';
 
 void main() {
   runApp(const MyApp());
