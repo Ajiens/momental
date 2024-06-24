@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/Forum/pages/forum.dart';
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 import 'package:momental/Authentication/widget/register.dart';
 import 'package:momental/widgets/button.dart';
 import 'package:momental/widgets/input_field.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/Forum/pages/forum.dart';
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({super.key});

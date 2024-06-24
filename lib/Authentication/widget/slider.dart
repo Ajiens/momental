@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 import 'package:momental/Authentication/widget/slider_content.dart';
 
 class SliderAuthentication extends StatefulWidget {

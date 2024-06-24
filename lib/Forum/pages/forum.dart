@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:momental/Forum/pages/forum_scroll.dart';
 
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 import 'package:momental/Forum/widget/postingan_card.dart';
 import 'package:momental/Forum/widget/tagline_forum_card.dart';
 import 'package:momental/widgets/header_option.dart';
@@ -14,16 +15,8 @@ class Forum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeaderKomunitas();
-  }
-
-  HeaderApp HeaderKomunitas() {
     return HeaderApp(
       withOption: false,
-      // optionWidgetInterface: [
-      //   Text("tes1"),
-      //   Text("tes2")
-      // ],
       leftCorner: Row(
         children: [
           SvgPicture.asset(
@@ -83,17 +76,10 @@ class Forum extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                const SizedBox(height:14),
-
-                PostinganCard(
-                  kontenStr: "Bunda, di sini adakah yang sering dengar anak tantrum jam 2 malam? solusinya apa ya bunda?", 
-                  withVote: true
-                ),
-                const SizedBox(height:14),
-                PostinganCard(
-                  kontenStr: "Sore puasa begini, bagaimana kabar perkembangan buah hati Bun?", 
-                  withVote: false
+                // Spacer(),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  child: ScrollingForum()
                 ),
               ],
             ),

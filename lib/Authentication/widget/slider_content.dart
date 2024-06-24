@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 
 class SliderContent extends StatelessWidget {
   final String imageAsset;

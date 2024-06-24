@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:momental/theme/color_pallete.dart';
+import 'package:momental/constant/color_pallete.dart';
 class HeaderApp extends StatefulWidget {
   final Widget leftCorner;
   final bool withOption;
@@ -45,7 +45,7 @@ class _HeaderAppState extends State<HeaderApp> {
     return Scaffold(
       backgroundColor: FoundationViolet.violet3,
       appBar: PreferredSize(
-        preferredSize: (widget.withOption)? Size.fromHeight(141): Size.fromHeight(73),
+        preferredSize: (widget.withOption)? Size.fromHeight(MediaQuery.of(context).size.height*.21): Size.fromHeight(MediaQuery.of(context).size.height*.125),
         child: Container(
           color: BlueMarguerite.shade700,
           padding: EdgeInsets.fromLTRB(24, 40, 24, 20),
