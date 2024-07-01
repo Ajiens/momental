@@ -44,7 +44,10 @@ class _ScrollingForumState extends State<ScrollingForum> {
     ''';
 
     try{
-      List<Postingan> temp = await db.query(queryStr, Postingan.fromMap);
+      List<Postingan> temp = await db.query(
+        queryStr, 
+        fromMap: (row) => Postingan.fromMap(row)
+      );
       setState(() {
         postingan = postingan + temp;
         _offsetQuery += 10;

@@ -21,7 +21,7 @@ class AuthenticationPage extends StatelessWidget {
           scrollDirection: Axis.vertical,
           children: [
             SliderAuthentication(),
-            ButtonPlaceholder(contextBefore: context,)
+            ButtonPlaceholder()
           ],
         ),
       )

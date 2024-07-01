@@ -23,4 +23,9 @@ class Pengguna {
       createdAt: row[4] as DateTime,
     );
   }
+
+  @override
+  String toString() {
+    return 'Postingan{email: $email + notelpon: $noTelpon + password: $password}';
+  }
 }

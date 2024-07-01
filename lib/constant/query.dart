@@ -2,15 +2,16 @@
 import 'package:postgres/postgres.dart';
 
 class Database {
-  Future<List<T>> query<T>(String queryStr, T Function(List<dynamic>) fromMap, [List<dynamic> parameters = const []]) async {
+  Future<List<T>> query<T>(
+    String queryStr,{T Function(List<dynamic>)? fromMap, List<dynamic> parameters = const []}) async {
     List<T> result =[];
     try {
       Connection connection = await Connection.open(
         Endpoint(
-          host: '',
+          host: 'ep-square-bread-a1j67zoh.ap-southeast-1.aws.neon.tech',
           database: 'Momental',
           username: 'Momental',
-          password: '',
+          password: 'pl8ZUGSKb1Lq',
         ),
         settings: ConnectionSettings(sslMode: SslMode.verifyFull),
       );
@@ -26,7 +27,7 @@ class Database {
 
       if (queryStr.trim().toLowerCase().startsWith("select")) {
         for (var row in queryResult) {
-          result.add(fromMap(row));
+          result.add(fromMap!(row));
         }
       }
       connection.close();

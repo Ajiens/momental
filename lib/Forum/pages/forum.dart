@@ -8,6 +8,7 @@ import 'package:momental/Forum/widget/postingan_card.dart';
 import 'package:momental/Forum/widget/tagline_forum_card.dart';
 import 'package:momental/widgets/header_option.dart';
 import 'package:momental/Forum/widget/mood_today.dart';
+import 'package:momental/widgets/toast.dart';
 
 
 class Forum extends StatelessWidget {
