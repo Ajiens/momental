@@ -6,6 +6,7 @@ import 'package:momental/constant/validator.dart';
 import 'package:momental/state_util.dart';
 import 'package:momental/widgets/inputField/text_field.dart';
 
+import '../../DataDiri/pages/data_diri.dart';
 import '../../widgets/button.dart';
 import '../../widgets/navbar.dart';
 import '../../widgets/toast.dart';
@@ -92,7 +93,7 @@ class Login extends StatefulWidget {
                 await controller.doLogin().then((response){
                   if (response["status"]){
                     Navigator.pushReplacement(Get.currentContext,
-                        MaterialPageRoute(builder: (context) => Navbar()));
+                        MaterialPageRoute(builder: (context) => DataDiri()));
                   }
                   else{
                     showToast(type: "Error", message: response["message"]);

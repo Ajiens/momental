@@ -42,6 +42,7 @@ class FoundationBlue {
   static const normal = Color(0xFFF2EFFE);
   static const normal_hover = Color(0xFFE2DBFE);
   static const normal_active = Color(0xFFD2C7FD);
+  static const dark = Color(0xFFEBE6FE);
 }
 
 class FoundationRed {

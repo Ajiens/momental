@@ -29,9 +29,6 @@ class _NavbarState extends State<Navbar> {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
-    const duration = Duration(milliseconds: 300);
-    
     return MaterialApp(
       home: Scaffold(  
         resizeToAvoidBottomInset: false,
