@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/constant/color_pallete.dart';
-import 'package:momental/widgets/icon_label.dart';
 
 class CustomTextInputField extends StatefulWidget {
   final Widget headerIcon;
@@ -9,7 +8,10 @@ class CustomTextInputField extends StatefulWidget {
   final bool isMustFilled;
   final TextInputType inputType;
   final Function(String) onChanged;
+  final Color fillColor;
   final Widget? prefix;
+  final Widget? suffix;
+  final String? hintText;
   final int? maxLength;
   final String? Function(String?)? validator;
   final bool? isPassword;
@@ -18,10 +20,13 @@ class CustomTextInputField extends StatefulWidget {
     Key? key,
     required this.headerIcon,
     required this.headerText,
+    required this.fillColor,
     required this.isMustFilled,
     required this.inputType,
     required this.onChanged,
+    this.hintText,
     this.prefix,
+    this.suffix,
     this.maxLength,
     this.validator,
     this.isPassword,
@@ -66,9 +71,19 @@ class _CustomTextInputFieldState extends State<CustomTextInputField> {
             decoration: InputDecoration(
               counterText: "",
               filled: true,
-              fillColor: FoundationViolet.violet5,
+              fillColor: widget.fillColor,
+              hintText: widget.hintText,
+              suffixIcon: widget.suffix,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: widget.prefix,
+              ),
+              hintStyle: GoogleFonts.poppins(
+                fontSize: 14,
+                color: FoundationViolet.violet7,
+                fontWeight: FontWeight.w400
+              ),
               contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              prefix: widget.prefix,
               prefixIconConstraints: BoxConstraints(minWidth: 0, minHeight: 0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:momental/DataDiri/pages/kartu_identitas.dart';
 import 'package:momental/constant/color_pallete.dart';
 import 'package:momental/widgets/button.dart';
+
+import 'form_data_perinatal.dart';
 
 class DataDiri extends StatefulWidget {
   const DataDiri({super.key});
@@ -16,29 +19,8 @@ class _DataDiriState extends State<DataDiri> {
   int step = 0;
 
   List<Widget> page = [
-    ListView(
-        scrollDirection: Axis.vertical,
-        children: [
-          Container(
-            height: 300,
-            color: Colors.indigo,
-          ),
-          Container(
-            height: 400,
-            color: Colors.transparent,
-          ),
-        ],
-      ),
-    
-    Container(
-      color: Colors.amber,
-    ),
-    Container(
-      color: Colors.cyan,
-    ),
-    Container(
-      color: Colors.greenAccent,
-    )
+    DataPerinatal(),
+    KartuIdentias(),
   ];
 
   @override

@@ -54,6 +54,7 @@ class Register extends StatefulWidget {
                     CustomTextInputField(
                       maxLength: 20,
                       isMustFilled: true,
+                      fillColor: FoundationViolet.violet5,
                       inputType: TextInputType.phone,
                       prefix: Text(" +62  |  "),
                       validator: Validator.noTelpon,
@@ -78,6 +79,7 @@ class Register extends StatefulWidget {
                     CustomTextInputField(
                       maxLength: 256,
                       isMustFilled: true,
+                      fillColor: FoundationViolet.violet5,
                       inputType: TextInputType.emailAddress,
                       validator: Validator.email,
                       headerIcon: const Icon(
@@ -100,6 +102,7 @@ class Register extends StatefulWidget {
                     SizedBox(height: 20,),
                     CustomTextInputField(
                       maxLength: 50,
+                      fillColor: FoundationViolet.violet5,
                       isMustFilled: true,
                       isPassword: true,
                       inputType: TextInputType.text,
@@ -124,6 +127,7 @@ class Register extends StatefulWidget {
                     SizedBox(height: 20,),
                     CustomTextInputField(
                       maxLength: 50,
+                      fillColor: FoundationViolet.violet5,
                       isMustFilled: true,
                       isPassword: true,
                       inputType: TextInputType.text,

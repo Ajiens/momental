@@ -38,6 +38,7 @@ class Login extends StatefulWidget {
             SizedBox(height: 40,),
             CustomTextInputField(
               isMustFilled: true,
+              fillColor: FoundationViolet.violet5,
               inputType: TextInputType.emailAddress,
               validator: Validator.email,
               headerIcon:  const Icon(
@@ -60,6 +61,7 @@ class Login extends StatefulWidget {
         
             CustomTextInputField(
               isMustFilled: true,
+              fillColor: FoundationViolet.violet5,
               isPassword: true,
               inputType: TextInputType.emailAddress,
               validator: Validator.required,
