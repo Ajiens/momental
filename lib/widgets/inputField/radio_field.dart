@@ -29,12 +29,14 @@ class RadioInputField extends StatefulWidget {
 class _QRadioFieldState extends State<RadioInputField> {
   List<Map<String, dynamic>> items = [];
 
+  String? errorText;
+
   @override
   void initState() {
     super.initState();
     for (final item in widget.items) {
       items.add(Map.from(item));
-      if (items.last['value'] == widget.value) {
+      if (items.last['label'] == widget.value) {
         items.last['checked'] = true;
       }
     }
@@ -46,6 +48,15 @@ class _QRadioFieldState extends State<RadioInputField> {
     }
   }
 
+  bool isFilled(){
+    for (final item in items){
+      if (item['checked'] == true){
+        return true;
+      }
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,10 +65,15 @@ class _QRadioFieldState extends State<RadioInputField> {
       ),
       child: FormField(
         initialValue: false,
-        validator: (value) => widget.validator!(items),
+        validator: (value) {
+          errorText = widget.validator!(items);
+          return errorText;
+        },
         builder: (FormFieldState<bool> field) {
+          print("FIELD DIA?? $field");
           return Container(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -103,7 +119,6 @@ class _QRadioFieldState extends State<RadioInputField> {
                             
                                 final String? label = items[items.indexOf(item)]['label'];
                                 final dynamic value = items[items.indexOf(item)]['value'];
-                                print("VALUEEE $value ++++ $newValue");
                                 widget.onChanged(value, label);
                               },
                               activeColor: BlueMarguerite.shade500,
@@ -127,6 +142,17 @@ class _QRadioFieldState extends State<RadioInputField> {
                     );
                   }).toList(),
                 ),
+                if (errorText != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 12),
+                    child: Text(
+                      errorText!,
+                      style: TextStyle(
+                        color: Colors.red[900],
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
               ],
             ),
           );

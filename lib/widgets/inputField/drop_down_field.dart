@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/state_util.dart';
-import 'package:postgres/postgres.dart';
 
 import '../../constant/color_pallete.dart';
 
@@ -23,9 +21,9 @@ class DropDownInputField extends StatefulWidget {
   final bool isMustFilled;
   final String inputSugest;
   final Widget? headerIcon;
-  final List<Map<String, dynamic>> items;
+  final List<Map<String, String>> items;
   final String? Function(Map<String, dynamic>? value)? validator;
-  final dynamic value;
+  final String? value;
   final Function(dynamic value, String? label) onChanged;
 
   @override
@@ -49,12 +47,12 @@ class _QDropdownFieldState extends State<DropDownInputField> {
 
     for (final item in widget.items) {
       items.add(item);
+      if (item['value'] == widget.value){
+        selectedValue = item;
+      }
     }
-
-    final values = widget.items.where((i) => i['value'] == widget.value).toList();
-
-    if (values.isNotEmpty) {
-      selectedValue = values.first;
+    if (selectedValue != null){
+      _controller.text = selectedValue?['value'];
     }
   }
 
@@ -90,11 +88,12 @@ class _QDropdownFieldState extends State<DropDownInputField> {
                 enableSuggestions: true,
                 controller: _controller,
                 validator: (value) {
+                  print(selectedValue);
                   if (widget.validator != null) {
-                    if (widget.inputSugest == _controller.text) {
+                    if (widget.inputSugest == _controller.text) { //Empty input
                       return widget.validator!(null);
                     }
-                    return widget.validator!(selectedValue);
+                    return widget.validator!(selectedValue); //Selected input
                   }
                   return null;
                 },
@@ -174,6 +173,7 @@ class _QDropdownFieldState extends State<DropDownInputField> {
                     onTap: () {
                       _controller.text = "${items[i]["value"]}";
                       widget.onChanged(items[i]["value"], "${items[i]["label"]}");
+                      selectedValue = items[i];
                       Get.back();
                     },
                     child: Container(

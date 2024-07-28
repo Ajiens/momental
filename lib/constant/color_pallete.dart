@@ -9,6 +9,7 @@ class Style {
   static const neutral = Color(0xFF9893A6);
   static const light = Color(0xFFF2EFFE);
   static const success = Color(0xFF54D759);
+  static const warning = Color(0xFFC8A52A);
   static const warningRed = Color(0xFFFE1E6F);
   static const blackText = Color(0xFF0304111);
   static const poll = LinearGradient(

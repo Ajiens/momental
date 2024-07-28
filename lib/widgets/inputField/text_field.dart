@@ -15,6 +15,7 @@ class CustomTextInputField extends StatefulWidget {
   final int? maxLength;
   final String? Function(String?)? validator;
   final bool? isPassword;
+  final String? value;
 
   CustomTextInputField({
     Key? key,
@@ -30,6 +31,7 @@ class CustomTextInputField extends StatefulWidget {
     this.maxLength,
     this.validator,
     this.isPassword,
+    this.value,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,20 @@ class CustomTextInputField extends StatefulWidget {
 }
 
 class _CustomTextInputFieldState extends State<CustomTextInputField> {
+    TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    textEditingController.text = widget.value ?? '';
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -60,7 +76,7 @@ class _CustomTextInputFieldState extends State<CustomTextInputField> {
           SizedBox(height: 8,),
           TextFormField(
               // TODO: tambahin Controller
-            
+            controller: textEditingController,
             validator: widget.validator,
             maxLength: widget.maxLength,
             keyboardType: widget.inputType,
