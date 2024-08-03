@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/constant/color_pallete.dart';
 
 class CustomTextInputField extends StatefulWidget {
-  final Widget headerIcon;
+  final Widget? headerIcon;
   final Text headerText;
   final bool isMustFilled;
   final TextInputType inputType;
@@ -13,22 +13,24 @@ class CustomTextInputField extends StatefulWidget {
   final Widget? suffix;
   final String? hintText;
   final int? maxLength;
+  final int? maxLine;
   final String? Function(String?)? validator;
   final bool? isPassword;
   final String? value;
 
   CustomTextInputField({
     Key? key,
-    required this.headerIcon,
     required this.headerText,
     required this.fillColor,
     required this.isMustFilled,
     required this.inputType,
     required this.onChanged,
+    this.headerIcon,
     this.hintText,
     this.prefix,
     this.suffix,
     this.maxLength,
+    this.maxLine,
     this.validator,
     this.isPassword,
     this.value,
@@ -60,7 +62,7 @@ class _CustomTextInputFieldState extends State<CustomTextInputField> {
         children: [
           Row(
             children: [
-              widget.headerIcon,
+              (widget.headerIcon != null) ? widget.headerIcon! : SizedBox(),
               SizedBox(width: 8,),
               widget.headerText,
               Spacer(),
@@ -75,7 +77,7 @@ class _CustomTextInputFieldState extends State<CustomTextInputField> {
           ),
           SizedBox(height: 8,),
           TextFormField(
-              // TODO: tambahin Controller
+            maxLines: widget.maxLine??1,
             controller: textEditingController,
             validator: widget.validator,
             maxLength: widget.maxLength,
