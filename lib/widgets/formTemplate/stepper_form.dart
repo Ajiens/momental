@@ -6,20 +6,24 @@ import 'package:momental/widgets/formTemplate/batalkan_proses.dart';
 import 'package:momental/widgets/formTemplate/simpan_perubahan.dart';
 
 class StepperForm extends StatefulWidget {
+  final String judul;
+  final Widget nextPageAfterDone;
   final List<Widget> pages;
   final List<GlobalKey<FormState>> formKeys;
   
   const StepperForm({
+    required this.judul,
+    required this.nextPageAfterDone,
     required this.pages,
     required this.formKeys,
     super.key
     });
 
   @override
-  State<StepperForm> createState() => _DataDiriState();
+  State<StepperForm> createState() => _StepperForm();
 }
 
-class _DataDiriState extends State<StepperForm> {
+class _StepperForm extends State<StepperForm> {
   late PageController _pageController;
   late int maxPage;
   int step = 0;
@@ -74,7 +78,7 @@ class _DataDiriState extends State<StepperForm> {
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text("Data Perinatal",
+                      child: Text(widget.judul,
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
@@ -116,8 +120,8 @@ class _DataDiriState extends State<StepperForm> {
                   if (step > 0) {
                     setState(() {
                       step--;
-                      _pageController.jumpToPage(step);
                     });    
+                    _pageController.jumpToPage(step);
                   }
                 }
               ),
@@ -125,7 +129,7 @@ class _DataDiriState extends State<StepperForm> {
           ),
           Expanded(
             child: CustomButton(
-              label: Text((step != maxPage-1)?"Lanjutkan":"Simpan",
+              label: Text((step+1 != maxPage)?"Lanjutkan":"Simpan",
                 style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
@@ -134,18 +138,22 @@ class _DataDiriState extends State<StepperForm> {
               ), 
               color: Style.primary, 
               tapFunction: (){
-                if (step < maxPage-1) {
+                if (step < maxPage) {
                   var formKey = widget.formKeys[step];
 
                   if (formKey.currentState!.validate()){ //Form is valid
-                    setState(() {
-                      step++;
+                    if (step < maxPage-1){
+                      setState(() {
+                        step++;
+                      });
                       _pageController.jumpToPage(step);
-                    });
+                    }
+                    else{
+                      showSimpanPerubahan(
+                        nextPage: widget.nextPageAfterDone
+                      );
+                    }
                   }
-                }
-                if (step == maxPage-1){
-                  showSimpanPerubahan();
                 }
               }
             ),

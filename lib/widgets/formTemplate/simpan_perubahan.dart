@@ -5,6 +5,7 @@ import 'package:momental/state_util.dart';
 import 'package:momental/widgets/button.dart';
 
 showSimpanPerubahan({
+  required Widget nextPage,
   String? subtitle
 }) async {
   await showDialog<void>(
@@ -66,7 +67,9 @@ showSimpanPerubahan({
                           ),
                         ),
                         color: Style.primary, 
-                        tapFunction: (){}
+                        tapFunction: (){
+                          Get.to(nextPage);
+                        }
                       ),
                     ),
                     SizedBox(height: 12,),
