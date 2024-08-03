@@ -25,6 +25,7 @@ class DataPerinatal extends StatelessWidget {
           children: [
             RadioInputField(
               isMustFilled: true,
+              isVertical: false,
               value: controller.kondisiKehamilan,
               headerText: Text("Kondisi kehamilan terdekat",
                 style: GoogleFonts.poppins(

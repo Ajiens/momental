@@ -97,7 +97,7 @@ class Login extends StatefulWidget {
                         MaterialPageRoute(builder: (context) => DataDiri()));
                   }
                   else{
-                    showToast(type: "Error", message: response["message"]);
+                    showToast(type: "Error", message: response["message"], duration: 2);
                   }
                   controller.formKey.currentState?.reset();
                 });

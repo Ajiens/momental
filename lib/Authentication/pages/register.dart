@@ -167,7 +167,7 @@ class Register extends StatefulWidget {
                       Navigator.pushReplacement(Get.currentContext,
                           MaterialPageRoute(builder: (context) => Navbar()));
                     }
-                    else{
+                    if (response["message"] != ""){
                       showToast(type: "Error", message: response["message"]);
                     }
                     controller.formKey.currentState?.reset();

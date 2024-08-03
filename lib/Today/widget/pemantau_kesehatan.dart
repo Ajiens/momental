@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:momental/Assessment/pages/asessment.dart';
 import 'package:momental/DataDiri/pages/data_diri.dart';
 import 'package:momental/constant/color_pallete.dart';
 import 'package:momental/state_util.dart';
@@ -244,7 +245,7 @@ class PemantauKesehatan extends StatelessWidget {
                 ),
               ), 
               color: Style.primary, 
-              tapFunction: (){Get.to(DataDiri());}),
+              tapFunction: (){Get.to(Assessment());}),
           )
         ],
       ),

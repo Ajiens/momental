@@ -34,6 +34,7 @@ class LoginFormController extends State<Login> {
     };
 
     if (!formKey.currentState!.validate()){
+      response["message"] = "Input tidak valid";
       return response; // Formulit ada yang tidak valid
     }
     

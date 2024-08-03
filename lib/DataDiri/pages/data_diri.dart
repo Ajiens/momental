@@ -5,6 +5,9 @@ import 'package:momental/widgets/formTemplate/stepper_form.dart';
 import 'package:momental/DataDiri/pages/form_data_perinatal.dart';
 import 'package:momental/DataDiri/pages/form_kartu_identitas.dart';
 
+import '../../widgets/navbar.dart';
+
+
 class DataDiri extends StatelessWidget {
   const DataDiri({super.key});
 
@@ -24,14 +27,13 @@ class DataDiri extends StatelessWidget {
     final List<Widget> page = [
       DataPerinatal(controller: dataPerinatalController,),
       KartuIdentitas(controller: kartuIdentitasController,),
-      Container(
-        color: Colors.amber,
-      )
     ];
 
     return StepperForm(
+      judul: "Data Perinatal",
       pages: page,
       formKeys: formKeys,
+      nextPageAfterDone: Navbar(),
     );
   }
 }
