@@ -8,6 +8,7 @@ class RadioInputField extends StatefulWidget {
     required this.isMustFilled,
     required this.items,
     required this.onChanged,
+    required this.isVertical,
     super.key,
     this.headerIcon,
     this.validator,
@@ -17,6 +18,7 @@ class RadioInputField extends StatefulWidget {
   final Text headerText;
   final bool isMustFilled;
   final Widget? headerIcon;
+  final bool isVertical;
   final List<Map<String, dynamic>> items;
   final String? Function(List<Map<String, dynamic>> item)? validator;
   final Function(dynamic value, String? label) onChanged;
@@ -70,7 +72,6 @@ class _QRadioFieldState extends State<RadioInputField> {
           return errorText;
         },
         builder: (FormFieldState<bool> field) {
-          print("FIELD DIA?? $field");
           return Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,57 +92,18 @@ class _QRadioFieldState extends State<RadioInputField> {
                   ],
                 ),
                 SizedBox(height: 8,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: items.map((item) {
-                    final bool isSelected = item['checked'] ?? false;
-                    return Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                        decoration: BoxDecoration(
-                          color:FoundationViolet.violet1,
-                          borderRadius: BorderRadius.circular(10),
-                          border: isSelected
-                              ? Border.all(color: FoundationRed.light_active, width: 4)
-                              : Border.all(color: Colors.transparent, width: 4),
-                        ),
-                        child: Row(
-                          children: [
-                            Radio(
-                              groupValue: true,
-                              value: isSelected,
-                              onChanged: (val) {
-                                setAllItemsToFalse();
-                                final newValue = val! ? false : true;
-                                items[items.indexOf(item)]['checked'] = newValue;
-                                field.didChange(true);
-                                setState(() {});
-                            
-                                final String? label = items[items.indexOf(item)]['label'];
-                                final dynamic value = items[items.indexOf(item)]['value'];
-                                widget.onChanged(value, label);
-                              },
-                              activeColor: BlueMarguerite.shade500,
-                            ),
-                           Expanded(
-                            child:  Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8),
-                              child: Text(
-                                  "${item["label"]}",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color:FoundationViolet.violet10,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
+                widget.isVertical
+                ? Column(
+                    children: items.map((item) {
+                      return radioButton(item, field);
+                    }).toList(),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: items.map((item) {
+                      return Expanded(child: radioButton(item, field));
+                    }).toList(),
+                  ),
                 if (errorText != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 12),
@@ -157,6 +119,53 @@ class _QRadioFieldState extends State<RadioInputField> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget radioButton(Map<String, dynamic> item, FormFieldState<bool> field){
+    final bool isSelected = item['checked'] ?? false;
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+      decoration: BoxDecoration(
+        color:FoundationViolet.violet1,
+        borderRadius: BorderRadius.circular(10),
+        border: isSelected
+            ? Border.all(color: FoundationRed.light_active, width: 4)
+            : Border.all(color: Colors.transparent, width: 4),
+      ),
+      child: Row(
+        children: [
+          Radio(
+            groupValue: true,
+            value: isSelected,
+            onChanged: (val) {
+              setAllItemsToFalse();
+              final newValue = val! ? false : true;
+              items[items.indexOf(item)]['checked'] = newValue;
+              field.didChange(true);
+              setState(() {});
+          
+              final String? label = items[items.indexOf(item)]['label'];
+              final dynamic value = items[items.indexOf(item)]['value'];
+              widget.onChanged(value, label);
+            },
+            activeColor: BlueMarguerite.shade500,
+          ),
+          Expanded(
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Text(
+                "${item["label"]}",
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color:FoundationViolet.violet10,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
