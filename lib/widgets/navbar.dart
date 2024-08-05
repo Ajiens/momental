@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:momental/Forum/pages/forum.dart';
+import 'package:momental/Profile/pages/profile_page.dart';
 import 'package:momental/Today/pages/main_today.dart';
 import 'package:momental/constant/color_pallete.dart';
 
@@ -52,10 +52,7 @@ class _NavbarState extends State<Navbar> {
                 size: 150,
               ),
               Forum(),
-              Icon(
-                Icons.chat,
-                size: 150,
-              ),
+              ProfilePage()
             ],
             
           ),
